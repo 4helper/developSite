@@ -14,6 +14,11 @@ mysql_close ( $con );
 // put the record to an array
 $record = array ();
 
+// do {
+// 	$item = mysql_fetch_array ( $result );
+// 	// put the record to record array
+// 	array_push ( $record, $item );
+// }while ($item);
 while ( $item = mysql_fetch_array ( $result ) ) {
 	// put the record to record array
 	array_push ( $record, $item );
@@ -36,18 +41,19 @@ $urls=array_unique($urls);
 </head>
 <body>
 	<h1>Ready Go Develop Site</h1>
-	<h2><a href="developUrl.php">Develop URL</a></h2>
+	<h2>
+		<a href="developUrl.php">Develop URL</a>
+	</h2>
 	<h2>Test mock Management</h2>
-	
+
 	<fieldset>
 		<legend>Url</legend>
 		<select id="server" name="server address">
 			<option value="http://192.168.1.120/">http://192.168.1.120/</option>
-			<option value="http://192.168.1.120:8080/">http://192.168.1.120:8080/</option>
+			<option value="http://localhost/">http://localhost/</option>
 			<option value="http://www.4helper.com/">http://www.4helper.com/</option>
 			<option value="https://www.4helper.com/">https://www.4helper.com/</option>
-		</select>
-		<select id="url">
+		</select> <select id="url">
 		<?php
 foreach ( $urls as $url ) {
 	echo "<option value=$url>$url</option>";
@@ -61,31 +67,23 @@ foreach ( $urls as $url ) {
 		<legend>Key management</legend>
 		<p id="setUrl"></p>
 		<form id=form action="" method="post" enctype="multipart/form-data">
-			<input name="phoneNumber" value="18611697407">Phone Number<br> 
-			<input name="areaCode" value="86">Area Code<br> 
-			<input name="password" value="qaz">Password<br> 
-			<input name="newPassword">newPassword<br> 
-			<input name="target_name">target_name<br> 
-			<input name="target_content">target_content<br>
-			<input name="target_end_time">target_end_time<br> 
-			<input name="receiver">receiver<br> 
-			<input name="target_id">target_id<br> 
-			<input name="target_status">target_status<br> <input name="eventIdentifier">eventIdentifier<br>
-			<input name="sessionCode">sessionCode<br> 
-			<input name="blockPhoneNumber">blockPhoneNumber<br> 
-			<input name="status">status<br>
-			<input name="action">action<br> 
-			<input name="deviceCode">deviceCode<br>
-			<input name="deviceToken">deviceToken<br> 
-			<input name="imageUpload" type="file">imageUpload<br> 
-			<input name="members">members<br> 
-			<input name="thumb">thumb<br> 
-			<input name="helperPhoneNumber">helperPhoneNumber<br> 
-			<input name="notificationNumber">notificationNumber<br> 
-			<input name="fileName">fileName<br> 
-			<input type="submit">
+			<input name="phoneNumber" value="18611697407">Phone Number<br> <input
+				name="areaCode" value="86">Area Code<br> <input name="password"
+				value="qaz">Password<br> <input name="newPassword">newPassword<br> <input
+				name="target_name">target_name<br> <input name="target_content">target_content<br>
+			<input name="target_end_time">target_end_time<br> <input
+				name="receiver">receiver<br> <input name="target_id">target_id<br> <input
+				name="target_status">target_status<br> <input name="eventIdentifier">eventIdentifier<br>
+			<input name="sessionCode">sessionCode<br> <input
+				name="blockPhoneNumber">blockPhoneNumber<br> <input name="status">status<br>
+			<input name="action">action<br> <input name="deviceCode">deviceCode<br>
+			<input name="deviceToken">deviceToken<br> <input name="imageUpload"
+				type="file">imageUpload<br> <input name="members">members<br> <input
+				name="thumb">thumb<br> <input name="helperPhoneNumber">helperPhoneNumber<br>
+			<input name="notificationNumber">notificationNumber<br> <input
+				name="fileName">fileName<br> <input type="submit">
 		</form>
-		
+
 	</fieldset>
 </body>
 </html>

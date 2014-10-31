@@ -1,6 +1,6 @@
 <?php
 //connect the server
-$con = mysql_connect ( "192.168.1.120", "root", "lyh1023nm" );
+$con = mysql_connect ( "127.0.0.1", "root", "lyh1023nm" );
 if (! $con) {
 	die ( 'Could not connect: ' . mysql_error () );
 }
