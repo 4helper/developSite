@@ -80,7 +80,10 @@ foreach ( $urls as $url ) {
 			<input name="deviceToken">deviceToken<br> <input name="imageUpload"
 				type="file">imageUpload<br> <input name="members">members<br> <input
 				name="thumb">thumb<br> <input name="helperPhoneNumber">helperPhoneNumber<br>
-			<input name="notificationNumber">notificationNumber<br> <input
+			<input name="notificationNumber">notificationNumber<br> 
+			<input name="checkPhoneNumber">checkPhoneNumber<br> 
+			<input name="platForm">platForm<br> 
+			<input
 				name="fileName">fileName<br> <input type="submit">
 		</form>
 
