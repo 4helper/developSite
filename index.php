@@ -83,6 +83,7 @@ foreach ( $urls as $url ) {
 			<input name="notificationNumber">notificationNumber<br> 
 			<input name="checkPhoneNumber">checkPhoneNumber<br> 
 			<input name="platForm">platForm<br> 
+			<input name="version">version<br> 
 			<input
 				name="fileName">fileName<br> <input type="submit">
 		</form>
