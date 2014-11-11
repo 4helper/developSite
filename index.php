@@ -51,6 +51,7 @@ $urls=array_unique($urls);
 		<select id="server" name="server address">
 			<option value="http://192.168.1.120/">http://192.168.1.120/</option>
 			<option value="http://localhost/">http://localhost/</option>
+			<option value="http://localhost:8080/">http://localhost:8080/</option>
 			<option value="http://www.4helper.com/">http://www.4helper.com/</option>
 			<option value="https://www.4helper.com/">https://www.4helper.com/</option>
 		</select> <select id="url">
@@ -71,11 +72,12 @@ foreach ( $urls as $url ) {
 				name="areaCode" value="86">Area Code<br> <input name="password"
 				value="qaz">Password<br> <input name="newPassword">newPassword<br> <input
 				name="target_name">target_name<br> <input name="target_content">target_content<br>
-			<input name="target_end_time">target_end_time<br> <input
-				name="receiver">receiver<br> <input name="target_id">target_id<br> <input
-				name="target_status">target_status<br> <input name="eventIdentifier">eventIdentifier<br>
-			<input name="sessionCode" value="6404151b4430ef5377f5fb3aa9ab95a48618611697407">sessionCode<br> <input
-				name="blockPhoneNumber">blockPhoneNumber<br> <input name="status">status<br>
+			<input name="target_end_time">target_end_time<br> 
+			<input name="checkPhoneNumber">checkPhoneNumber<br>
+			<input name="receiver">receiver<br> <input name="target_id">target_id<br> 
+			<input name="target_status">target_status<br> <input name="eventIdentifier">eventIdentifier<br>
+			<input name="sessionCode" value="6404151b4430ef5377f5fb3aa9ab95a48618611697407">sessionCode<br> 
+			<input name="blockPhoneNumber">blockPhoneNumber<br> <input name="status">status<br>
 			<input name="action">action<br> <input name="deviceCode">deviceCode<br>
 			<input name="deviceToken">deviceToken<br> <input name="imageUpload"
 				type="file">imageUpload<br> <input name="members">members<br> <input
@@ -86,8 +88,7 @@ foreach ( $urls as $url ) {
 			<input name="version">version<br> 
 			<input name="comment">comment<br> 
 			<input name="lastGetTime">lastGetTime<br> 
-			<input
-				name="fileName">fileName<br> <input type="submit">
+			<input name="fileName">fileName<br> <input type="submit">
 		</form>
 
 	</fieldset>
