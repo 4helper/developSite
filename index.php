@@ -74,7 +74,7 @@ foreach ( $urls as $url ) {
 			<input name="target_end_time">target_end_time<br> <input
 				name="receiver">receiver<br> <input name="target_id">target_id<br> <input
 				name="target_status">target_status<br> <input name="eventIdentifier">eventIdentifier<br>
-			<input name="sessionCode">sessionCode<br> <input
+			<input name="sessionCode" value="6404151b4430ef5377f5fb3aa9ab95a48618611697407">sessionCode<br> <input
 				name="blockPhoneNumber">blockPhoneNumber<br> <input name="status">status<br>
 			<input name="action">action<br> <input name="deviceCode">deviceCode<br>
 			<input name="deviceToken">deviceToken<br> <input name="imageUpload"
@@ -84,6 +84,8 @@ foreach ( $urls as $url ) {
 			<input name="checkPhoneNumber">checkPhoneNumber<br> 
 			<input name="platForm">platForm<br> 
 			<input name="version">version<br> 
+			<input name="comment">comment<br> 
+			<input name="lastGetTime">lastGetTime<br> 
 			<input
 				name="fileName">fileName<br> <input type="submit">
 		</form>
