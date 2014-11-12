@@ -1,33 +1,33 @@
-<?php 
-//get the trade code from server
-//get db connect
+<?php
+// get the trade code from server
+// get db connect
 require 'db_connect.php';
 
-//get all record from the table
+// get all record from the table
 $sql = "SELECT url.url, url.explaination as urlExplaination, keyWord.`key`, keyWord.type, keyWord.explaination as keyWordExplaination, url_keyWord.allowEmpty from url
 join url_keyWord on url.id = url_keyWord.urlId
 join keyWord on url_keyWord.keyWordId = keyWord.id
 ORDER BY url.id";
-$result = mysql_query($sql, $con);
+$result = mysql_query ( $sql, $con );
 mysql_close ( $con );
 
 // put the record to an array
 $record = array ();
 
 // do {
-// 	$item = mysql_fetch_array ( $result );
-// 	// put the record to record array
-// 	array_push ( $record, $item );
+// $item = mysql_fetch_array ( $result );
+// // put the record to record array
+// array_push ( $record, $item );
 // }while ($item);
 while ( $item = mysql_fetch_array ( $result ) ) {
 	// put the record to record array
 	array_push ( $record, $item );
 }
-$urls = array();
-foreach ($record as $item){
-	array_push ( $urls, $item[url] );
+$urls = array ();
+foreach ( $record as $item ) {
+	array_push ( $urls, $item [url] );
 }
-$urls=array_unique($urls);
+$urls = array_unique ( $urls );
 ?>
 
 
@@ -56,11 +56,11 @@ $urls=array_unique($urls);
 			<option value="https://www.4helper.com/">https://www.4helper.com/</option>
 		</select> <select id="url">
 		<?php
-foreach ( $urls as $url ) {
-	echo "<option value=$url>$url</option>";
-}
-
-?>
+		foreach ( $urls as $url ) {
+			echo "<option value=$url>$url</option>";
+		}
+		
+		?>
 		</select>
 		<button id="submit">set url</button>
 	</fieldset>
@@ -72,23 +72,24 @@ foreach ( $urls as $url ) {
 				name="areaCode" value="86">Area Code<br> <input name="password"
 				value="qaz">Password<br> <input name="newPassword">newPassword<br> <input
 				name="target_name">target_name<br> <input name="target_content">target_content<br>
-			<input name="target_end_time">target_end_time<br> 
-			<input name="checkPhoneNumber">checkPhoneNumber<br>
-			<input name="receiver">receiver<br> <input name="target_id">target_id<br> 
-			<input name="target_status">target_status<br> <input name="eventIdentifier">eventIdentifier<br>
-			<input name="sessionCode" value="6404151b4430ef5377f5fb3aa9ab95a48618611697407">sessionCode<br> 
-			<input name="blockPhoneNumber">blockPhoneNumber<br> <input name="status">status<br>
-			<input name="action">action<br> <input name="deviceCode">deviceCode<br>
-			<input name="deviceToken">deviceToken<br> <input name="imageUpload"
-				type="file">imageUpload<br> <input name="members">members<br> <input
-				name="thumb">thumb<br> <input name="helperPhoneNumber">helperPhoneNumber<br>
-			<input name="notificationNumber">notificationNumber<br> 
-			<input name="checkPhoneNumber">checkPhoneNumber<br> 
-			<input name="platForm">platForm<br> 
-			<input name="version">version<br> 
-			<input name="comment">comment<br> 
-			<input name="lastGetTime">lastGetTime<br> 
-			<input name="fileName">fileName<br> <input type="submit">
+			<input name="target_end_time">target_end_time<br> <input
+				name="checkPhoneNumber">checkPhoneNumber<br> <input name="receiver">receiver<br>
+			<input name="target_id">target_id<br> <input name="target_status">target_status<br>
+			<input name="eventIdentifier">eventIdentifier<br> <input
+				name="sessionCode"
+				value="6404151b4430ef5377f5fb3aa9ab95a48618611697407">sessionCode<br>
+			<input name="blockPhoneNumber">blockPhoneNumber<br> <input
+				name="status">status<br> <input name="action">action<br> <input
+				name="deviceCode">deviceCode<br> <input name="deviceToken">deviceToken<br>
+			<input name="imageUpload" type="file">imageUpload<br> <input
+				name="members">members<br> <input name="thumb">thumb<br> <input
+				name="helperPhoneNumber">helperPhoneNumber<br> <input
+				name="notificationNumber">notificationNumber<br> <input
+				name="checkPhoneNumber">checkPhoneNumber<br> <input name="platForm">platForm<br>
+			<input name="version">version<br> <input name="comment">comment<br> <input
+				name="lastGetTime">lastGetTime<br> <input
+				name="addressBookPhoneNumber">addressBookPhoneNumber<br> <input
+				name="fileName">fileName<br> <input type="submit">
 		</form>
 
 	</fieldset>
