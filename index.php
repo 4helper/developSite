@@ -50,6 +50,7 @@ $urls = array_unique ( $urls );
 		<legend>Url</legend>
 		<select id="server" name="server address">
 			<option value="http://192.168.1.120/">http://192.168.1.120/</option>
+			<option value="http://123.57.133.183/">http://123.57.133.183/</option>
 			<option value="http://localhost/">http://localhost/</option>
 			<option value="http://localhost:8080/">http://localhost:8080/</option>
 			<option value="http://www.4helper.com/">http://www.4helper.com/</option>
