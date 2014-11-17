@@ -49,7 +49,6 @@ $urls = array_unique ( $urls );
 	<fieldset>
 		<legend>Url</legend>
 		<select id="server" name="server address">
-			<option value="http://192.168.1.120/">http://192.168.1.120/</option>
 			<option value="http://123.57.133.183/">http://123.57.133.183/</option>
 			<option value="http://localhost/">http://localhost/</option>
 			<option value="http://localhost:8080/">http://localhost:8080/</option>
@@ -88,8 +87,10 @@ $urls = array_unique ( $urls );
 				name="notificationNumber">notificationNumber<br> <input
 				name="checkPhoneNumber">checkPhoneNumber<br> <input name="platForm">platForm<br>
 			<input name="version">version<br> <input name="comment">comment<br> <input
-				name="lastGetTime">lastGetTime<br> <input
-				name="addressBookPhoneNumber">addressBookPhoneNumber<br> <input
+				name="lastGetTime">lastGetTime<br> 
+				<input name="addressBookPhoneNumber">addressBookPhoneNumber<br> 
+				<input name="personalComment">personalComment<br> 
+				<input
 				name="fileName">fileName<br> <input type="submit">
 		</form>
 
