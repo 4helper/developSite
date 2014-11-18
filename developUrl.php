@@ -1,3 +1,20 @@
+<?php 
+if (! isset ( $_SERVER ['PHP_AUTH_USER'] )) {
+	header ( 'WWW-Authenticate: Basic realm="Ready Gooo"' );
+	header ( 'HTTP/1.0 401 Unauthorized' );
+	echo 'Welcome you next time.';
+	exit ();
+} else {
+	$user = $_SERVER ['PHP_AUTH_USER'];
+	$password = $_SERVER ['PHP_AUTH_PW'];
+	if ($user != 'readygo' || $password != 'readygooo1408') {
+		header ( 'WWW-Authenticate: Basic realm="My Realm"' );
+		header ( 'HTTP/1.0 401 Unauthorized' );
+		die("Welcome you next time.");
+	}
+	echo "<h>Authenrized</h>";
+}
+?>
 <html lang="zh">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

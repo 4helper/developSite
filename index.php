@@ -1,4 +1,19 @@
 <?php
+if (! isset ( $_SERVER ['PHP_AUTH_USER'] )) {
+	header ( 'WWW-Authenticate: Basic realm="Ready Gooo"' );
+	header ( 'HTTP/1.0 401 Unauthorized' );
+	echo 'Welcome you next time.';
+	exit ();
+} else {
+	$user = $_SERVER ['PHP_AUTH_USER'];
+	$password = $_SERVER ['PHP_AUTH_PW'];
+	if ($user != 'readygo' || $password != 'readygooo1408') {
+		header ( 'WWW-Authenticate: Basic realm="My Realm"' );
+		header ( 'HTTP/1.0 401 Unauthorized' );
+		die("Welcome you next time.");
+	}
+	echo "<h>Authenrized</h>";
+}
 // get the trade code from server
 // get db connect
 require 'db_connect.php';
@@ -87,11 +102,10 @@ $urls = array_unique ( $urls );
 				name="notificationNumber">notificationNumber<br> <input
 				name="checkPhoneNumber">checkPhoneNumber<br> <input name="platForm">platForm<br>
 			<input name="version">version<br> <input name="comment">comment<br> <input
-				name="lastGetTime">lastGetTime<br> 
-				<input name="addressBookPhoneNumber">addressBookPhoneNumber<br> 
-				<input name="personalComment">personalComment<br> 
-				<input
-				name="fileName">fileName<br> <input type="submit">
+				name="lastGetTime">lastGetTime<br> <input
+				name="addressBookPhoneNumber">addressBookPhoneNumber<br> <input
+				name="personalComment">personalComment<br> <input name="fileName">fileName<br>
+			<input type="submit">
 		</form>
 
 	</fieldset>
