@@ -97,7 +97,9 @@ $urls = array_unique ( $urls );
 			<input name="blockPhoneNumber">blockPhoneNumber<br> <input
 				name="status">status<br> <input name="action">action<br> <input
 				name="deviceCode">deviceCode<br> <input name="deviceToken">deviceToken<br>
-			<input name="imageUpload" type="file">imageUpload<br> <input
+			<input name="imageUpload" type="file">imageUpload<br> 
+			<input name="fileUpload" type="file">fileUpload<br> 
+			<input
 				name="members">members<br> <input name="thumb">thumb<br> <input
 				name="helperPhoneNumber">helperPhoneNumber<br> <input
 				name="notificationNumber">notificationNumber<br> <input
