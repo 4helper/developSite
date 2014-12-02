@@ -10,7 +10,7 @@ if (! isset ( $_SERVER ['PHP_AUTH_USER'] )) {
 	if ($user != 'readygo' || $password != 'readygooo1408') {
 		header ( 'WWW-Authenticate: Basic realm="My Realm"' );
 		header ( 'HTTP/1.0 401 Unauthorized' );
-		die("Welcome you next time.");
+		die ( "Welcome you next time." );
 	}
 	echo "<h>Authenrized</h>";
 }
@@ -60,7 +60,7 @@ $urls = array_unique ( $urls );
 		<a href="developUrl.php">Develop URL</a>
 	</h2>
 	<h2>Test mock Management</h2>
-	
+
 
 	<fieldset>
 		<legend>Url</legend>
@@ -71,6 +71,7 @@ $urls = array_unique ( $urls );
 			<option value="http://www.4helper.com/">http://www.4helper.com/</option>
 			<option value="https://www.4helper.com/">https://www.4helper.com/</option>
 		</select> <select id="url">
+			<option>Please choose your action</option>
 		<?php
 		foreach ( $urls as $url ) {
 			echo "<option value=$url>$url</option>";
@@ -78,46 +79,118 @@ $urls = array_unique ( $urls );
 		
 		?>
 		</select>
-		<button id="submit">set url</button>
+		<button id="setUrl">set url</button>
 	</fieldset>
 	<fieldset>
 		<legend>Key management</legend>
-		<p id="setUrl"></p>
+		<p id="setedUrl"></p>
 		<form id=form action="" method="post" enctype="multipart/form-data">
-			<input name="phoneNumber" value="18611697407">Phone Number<br> <input
-				name="areaCode" value="86">Area Code<br> <input name="password"
-				value="qaz">Password<br> <input name="newPassword">newPassword<br> <input
-				name="target_name">target_name<br> <input name="target_content">target_content<br>
-			<input name="target_end_time">target_end_time<br> <input
-				name="checkPhoneNumber">checkPhoneNumber<br> <input name="receiver">receiver<br>
-			<input name="target_id">target_id<br> <input name="target_status">target_status<br>
-			<input name="eventIdentifier">eventIdentifier<br> <input
-				name="sessionCode"
-				value="6404151b4430ef5377f5fb3aa9ab95a48618611697407">sessionCode<br>
-			<input name="blockPhoneNumber">blockPhoneNumber<br> <input
-				name="status">status<br> <input name="action">action<br> <input
-				name="deviceCode">deviceCode<br> <input name="deviceToken">deviceToken<br>
-			<input name="imageUpload" type="file">imageUpload<br> 
-			<input name="fileUpload" type="file">fileUpload<br> 
-			<input
-				name="members">members<br> <input name="thumb">thumb<br> <input
-				name="helperPhoneNumber">helperPhoneNumber<br> <input
-				name="notificationNumber">notificationNumber<br> <input
-				name="checkPhoneNumber">checkPhoneNumber<br> <input name="platForm">platForm<br>
-			<input name="version">version<br> <input name="comment">comment<br> <input
-				name="lastGetTime">lastGetTime<br> <input
-				name="addressBookPhoneNumber">addressBookPhoneNumber<br> <input
-				name="personalComment">personalComment<br> <input name="fileName">fileName<br>
+			<h5>fix keys</h5>
+			<table>
+				<tr>
+					<td><input name="phoneNumber" value="18611697407" id="phoneNumber" />
+						Phone Number</td>
+				</tr>
+				<tr>
+					<td><input name="areaCode" value="86" /> Area Code</td>
+				</tr>
+				<tr>
+					<td><input name="password" /> password</td>
+				</tr>
+				<tr>
+					<td><input name="sessionCode" id="sessionCode" value="">
+						sessionCode</td>
+					<td></td>
+					<td><a href="#" id="getSessionCode">Get sessionCode</a></td>
+				</tr>
+			</table>
+			<hr>
+			<h5>keys according url</h5>
+			<table id="inputTable">
+			</table>
+			<hr>
+			<h5>files</h5>
+			<input name=uploadFile type="file">uploadFile
+			<hr>
 			<input type="submit">
 		</form>
 
+	</fieldset>
+	<fieldset>
+		<legend>Results</legend>
+		<div id="results"></div>
 	</fieldset>
 </body>
 </html>
 <script type="text/javascript">
 $(function() {
-	$("#submit").click(submitForm);
+	$("#setUrl").click(setUrl);
+	$("#getSessionCode").click(getSessionCode);
+	$("#url").change(getKeysByUrl);
+
+	//submit form
+	// ajax options modify target
+	var options = {
+		beforeSubmit : beforeSumbitForm, // pre-submit callback
+		success : successFeedBack, // post-submit callback
+		dataType : 'json',
+		error : showError,
+	};
+	// submit single helper target
+	$("#form").validate({
+		submitHandler : function(form) {
+			// Submit form by Ajax
+			jQuery(form).ajaxSubmit(options);
+		}
+	});
 });
+
+
+function successFeedBack()
+{
+	alert("successFeedBack");
+}
+function beforeSumbitForm()
+{
+	alert("beforeSumbitForm");
+}
+
+//get keys according url
+function getKeysByUrl()
+{
+	var url = $("#url").val();
+	//set form action
+	setFormAction(url);
+	//get key according url
+	$.getJSON('getKeyByUrl.php', {url: url}, function(json) {
+		//clear table history
+		$(".alterKey").remove();
+		for(index in json){
+			var tr = $("<div class='alterKey'></div>");
+			var input = $("<input name='" + json[index]['key'] + "'>"+json[index]['key']+"</br>");
+			tr.append(input);
+			$("#inputTable").append(tr);
+// 			alert("index");
+		}
+	});
+}
+
+function setFormAction(url)
+{
+	url = "/" + url;
+	alert(url);
+	$("#form").attr("action", url);
+}
+
+//get sessionCode according phoneNumber
+function getSessionCode()
+{
+	var phoneNumber = $("#phoneNumber").val();
+	$.getJSON('getSessionCode.php', {phoneNumber:phoneNumber}, function(json) {
+		$("#sessionCode").attr("value", json.sessionCode);
+	});
+}
+
 function successSubmit()
 {
 	jQuery(form).ajaxSubmit(submitForm);
@@ -127,7 +200,7 @@ function beforeSubmit()
 	
 }
 
-function submitForm()
+function setUrl()
 {
 	var myServer = $("#server").val();
 	var myUrl = myServer + $("#url").val();
@@ -141,9 +214,10 @@ function submitForm()
 // 	// submit single helper target
 // 	$("#form").ajaxSubmit(submitForm);
  	$("#form").attr("action", myUrl) ;
- 	$("#setUrl").text(myUrl);
-
+ 	$("#setedUrl").text(myUrl);
 }
+
+
 function showError() {
 	alert("please check your network");
 }
